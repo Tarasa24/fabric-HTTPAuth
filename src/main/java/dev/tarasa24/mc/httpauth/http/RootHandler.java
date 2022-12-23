@@ -32,8 +32,11 @@ public class RootHandler implements HttpHandler {
     if (xchg.getRequestHeaders().getFirst(config.nicknameHeader) != null) {
       String nickname = xchg.getRequestHeaders().getFirst(config.nicknameHeader);
 
-      auth(nickname);
-
+      if (auth(nickname)) {
+        html = html.replace("{{MESSAGE}}", "You are now authenticated as " + nickname);
+      } else {
+        html = html.replace("{{MESSAGE}}", "Authentication failed");
+      }
       byte[] buffer = html.getBytes();
       xchg.sendResponseHeaders(200, buffer.length);
 
