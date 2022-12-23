@@ -15,7 +15,7 @@ import static dev.tarasa24.mc.httpauth.HttpAuth.config;
 public class RootHandler implements HttpHandler {
   private boolean auth(String nickname) {
     PlayerObject playerObject = playerManager.get(nickname);
-    if (playerObject == null || playerObject.isAuthenticated()) {
+    if (playerObject == null || playerObject.isAuthenticated() || !playerObject.isOnline()) {
       return false;
     } else {
       playerObject.authenticate();
