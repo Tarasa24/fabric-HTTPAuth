@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.tarasa24.mc.httpauth.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [],
+  "server": [
+    "ServerPlayNetworkHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
