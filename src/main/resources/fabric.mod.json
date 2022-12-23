@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "global-password",
+  "id": "httpauth",
   "version": "0.1",
-  "name": "Example Mod",
+  "name": "HTTP Auth",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -16,10 +16,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.tarasa24.globalpassword.GlobalPassword"
+      "dev.tarasa24.mc.httpauth.HttpAuth"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "fabric.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric-api": "*",
