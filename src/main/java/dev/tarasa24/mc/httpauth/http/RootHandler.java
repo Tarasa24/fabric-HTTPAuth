@@ -37,18 +37,15 @@ public class RootHandler implements HttpHandler {
       } else {
         html = html.replace("{{MESSAGE}}", "Authentication failed");
       }
-      byte[] buffer = html.getBytes();
-      xchg.sendResponseHeaders(200, buffer.length);
-
-      OutputStream os = xchg.getResponseBody();
-      os.write(buffer);
-      os.close();
     } else {
-      // Redirect to Set-Nickname flow
-      xchg.getResponseHeaders().add("Location", config.redirectUrl);
-      xchg.sendResponseHeaders(302, -1);
-
-      xchg.close();
+      html = html.replace("{{MESSAGE}}", config.nicknameHeader + " header not found");
     }
+
+    byte[] buffer = html.getBytes();
+    xchg.sendResponseHeaders(200, buffer.length);
+
+    OutputStream os = xchg.getResponseBody();
+    os.write(buffer);
+    os.close();
   }
 }
